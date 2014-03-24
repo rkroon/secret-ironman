@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cheapest Array Adjustment</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+    table{
+    		border-collapse: collapse;
+    	}
+    	table td{
+    		border: 1px solid grey;
+    	}
+
+    	.resultTable td{
+min-width: 30px;
+    text-align: center;
+    	}
+
+    	table th{
+    		padding: 10px 0px 10px;
+    	}
+    </style>
+
+  </head>
+  <body>
+    <h1>Cheapest Array Adjustment</h1>
+	    <p>
+	    	Given an array of numbers (e.g 5,4,3,2,8) what is the number X such that each element of the array can be modified by (+/-) [0, X] to create an array that is strictly ascending.<br/>
+		    <br/>
+		    For the example 5,4,3,2,8 then X is 3.<br/>
+		    5 -> 2<br/>
+		    4 -> 3<br/>
+		    3 -> 4<br/>
+		    2 -> 5<br/>
+		    8 -> 8<br/>
+		    <form action="/" method="get">
+		    	<input type="text" name="array" value="<%- result.arrayQuery %>" />
+		    	<input type="submit" value="Find Cheapest Change" />
+			</form>
+			<br/>
+			<% if(result) { %>
+				<table>
+				<tr><td>Starting Array</td>
+					<td>
+				<%- result.array %>
+					</td>
+				</tr>
+				<tr>
+					<th colspan="2" style="text-align: center;">"Move All Up" Method</th>
+				</tr>
+				<tr>
+					<td>Biggest Change Up (BCU)</td><td> <%- result.highestCost %></td>
+				</tr>
+				<tr>
+					<td>Biggest Change Down (BCD)</td><td><%- result.lowestCost %></td>
+				</tr>
+				<td>
+					Best Cost = (BCU-BCD)/2 Rounded Up</td><td>
+				  <%- result.bestCost %></td>
+				</tr>
+				<tr>
+					<td>
+						Fixed Array
+					</td>
+					<td>
+						<table class="resultTable">
+							<tr>
+								<th>
+									New Value
+								</th>
+						<% for(var i = 0; i < result.fixedArray.length; i++){ %>
+							<td><%- result.fixedArray[i][0] %></td>
+						<% } %>
+
+					</tr>
+					<tr>
+								<th>
+									Change
+								</th>
+									<% for(var i = 0; i < result.fixedArray.length; i++){ %>
+								<td><%- result.fixedArray[i][1] %></td>
+						<% } %>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				</table>
+			<% } %>
+	    </p>
+  </body>
+</html>
